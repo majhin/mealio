@@ -56,3 +56,15 @@ body{
     height: 900px;
     color: white;
 }
+
+#searchSuggestions{
+    background-color: aliceblue;
+    top: 106px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: fit-content;
+    width: 400px;
+    border-radius: 5px;
+}
