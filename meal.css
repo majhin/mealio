@@ -1,0 +1,58 @@
+@font-face {
+    font-family: "BebasNeue-Regular";
+    src: url(./Assets/BebasNeue-Regular.ttf);
+  }
+
+.pos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background-color: #222;
+}
+
+.container{
+    flex-direction: column;
+    height: 90vh;
+    width: 70vw;
+    min-width: 1280px;
+    min-height: 720px;
+}
+
+.heading{
+    border: 1px solid black;
+    width: 700px;
+    height: 100px;
+    text-align: center;
+}
+
+.heading>h1{
+    font-family: "BebasNeue-Regular";
+    margin: 0;
+    padding: 0;
+    font-size: 3em;
+    color: aliceblue;
+}
+
+.search{
+    border: 1px solid red;
+    width: 700px;
+    height: 100px;
+}
+
+.randomButtons{
+    border: 1px solid green;
+    width: 700px;
+    height: 100px;
+}
+
+.meals{
+    border: 1px solid blue;
+    width: 700px;
+    height: 900px;
+    color: white;
+}
