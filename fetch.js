@@ -18,7 +18,7 @@ export const fetchByLetter = (searchText) => {
 					}
 				});
 			} else {
-				console.log(res);
+				// console.log(res);
 			}
 		});
 	});
@@ -37,7 +37,7 @@ export const fetchByID = (id) => {
 					}
 				});
 			} else {
-				console.log(res);
+				// console.log(res);
 			}
 		});
 	});
@@ -56,7 +56,7 @@ export const fetchSurprise = () => {
 					}
 				});
 			} else {
-				console.log(res);
+				// console.log(res);
 			}
 		});
 	});
