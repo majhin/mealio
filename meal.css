@@ -3,6 +3,26 @@
     src: url(./Assets/BebasNeue-Regular.ttf);
 }
 
+@font-face {
+    font-family: "Josefin Sans";;
+    src: url(./Assets/JosefinSans-Regular.ttf);
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    border-radius: 8px;
+    background-color: aliceblue;
+    border: 1px solid #cacaca;    
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: 8px;
+    background-image: linear-gradient( 111.4deg,  rgba(238,113,113,1) 1%, rgba(246,215,148,1) 58% );
+}
+
 .pos{
     display: flex;
     justify-content: center;
@@ -12,8 +32,10 @@
 body{
     margin: 0;
     padding: 0;
-    background-color: #222;
+    background-image: linear-gradient( 58.2deg,  rgba(40,91,212,0.73) -3%, rgba(171,53,163,0.45) 49.3%, rgba(255,204,112,0.37) 97.7% );
     overflow: hidden;
+    color: aliceblue;
+    font-family: "Josefin Sans";
 }
 
 .container{
@@ -25,7 +47,6 @@ body{
 }
 
 .heading{
-    border: 1px solid black;
     width: 700px;
     height: 100px;
     text-align: center;
@@ -40,28 +61,46 @@ body{
 }
 
 .search{
-    border: 1px solid red;
     width: 700px;
     height: 100px;
+}
+
+#search {
+    background: none;
+    appearance: none;
+    border-color: aliceblue;
+    border-style: solid;
+    border-radius: 4px;
+    border-width: 3px;
+    height: 20px;
+    width: 200px;
+    color: aliceblue;
+    font-size: larger;
+}
+
+#search::placeholder{
+    color:aliceblue;
+    opacity: 0.4;
+    font-weight: lighter;
+    letter-spacing: -1px;
+}
+
+#search:focus{
+    outline: none;
+    padding: 2px;
+    width: 350px;
+    border-color: aliceblue;
+    border-width: 1px;
+    transition: all 0.5s ease-in-out;
 }
 
 .randomButtons{
-    border: 1px solid green;
     width: 700px;
     height: 100px;
+    display: flex;
+    justify-content: space-evenly;
 }
-
-.meals{
-    border: 1px solid blue;
-    width: 700px;
-    height: 900px;
-    background-color: white;
-    overflow-y: auto;
-    overflow-x: hidden;
-}
-
 .searchSuggestions{
-    background-color: aliceblue;
     padding: 10px;
     top: 106px;
     position: absolute;
@@ -71,6 +110,13 @@ body{
     height: fit-content;
     width: 450px;
     border-radius: 5px;
+    z-index: 1;
+    background-color: white;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 .singleSuggestion {
@@ -78,11 +124,14 @@ body{
     align-items: center;
     justify-content: space-between;
     height: 35px;
+    border-radius: 5px;
 }
 
 .singleSuggestion:hover {
     transform: scale(1.04);
-    background-color: rgb(229, 229, 229);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid palevioletred;
     cursor: pointer;
 }
 
@@ -93,13 +142,13 @@ body{
     cursor: pointer;
 }
 
-.para {
-    color: red;
+.moreInfo {
+    height: 32px;
+    width: 32px;
     cursor: pointer;
 }
 
 .detailsPage{
-    background-color: aliceblue;
     position: absolute;
     display: flex;
     flex-direction: column;
@@ -112,6 +161,8 @@ body{
     height: 450px; 
     width: 450px;
     padding: 20px;
+    background-image: linear-gradient( 58.2deg,  rgba(40,91,212,0.73) -3%, rgba(171,53,163,0.45) 49.3%, rgba(255,204,112,0.37) 97.7%);
+    backdrop-filter: blur(7px);
 }
 @keyframes detailsPageMove {
     from {top: 500px; height: 0px; opacity: 0.2;}
@@ -122,37 +173,102 @@ body{
     border: 1px solid black;
 }
 
+.meals{
+    width: 700px;
+    height: 900px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    border-radius: 5px;
+}
+
 .detailsPageCont {
     height: 160px;
     width: 450px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-around;
     flex-direction: row;
 }
 
 .detailsPageImage {
     height: 150px;
     width: 150px;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    filter: drop-shadow(0 0 0.2rem crimson);
 }
 
 .detailsPageText {
     height: 160px;
     width: 300px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
 }
 
 .detailsPageTextData{
     height: 50px;
     width: 280px;
     display: flex;
+    align-items: center;
     justify-content: space-between;
-    flex-direction: row;
+    padding: 5px;
+}
+
+.close {
+    height: 32px;
+    width: 32px;
+    cursor: pointer;
 }
 
 .singleFavMealCont {
     height: 160px;
-    width: 700px;
+    width: 685px;
+    margin: 5px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
     flex-direction: row;
+    background-color: white;
+    background: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 10px;
+}
+
+.button {
+  background-color: #EA4C89;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button:hover,.button:focus {
+  background-color: #F082AC;
 }

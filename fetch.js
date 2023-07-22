@@ -40,3 +40,21 @@ export const fetchByID = (id) => {
 		});
 	});
 };
+
+export const fetchSurprise = () => {
+	return new Promise((resolve, reject) => {
+		let url = `https://www.themealdb.com/api/json/v1/1/random.php`;
+		fetch(url).then((res) => {
+			if (res.ok) {
+				res.json().then((data) => {
+					if (data.meals != null) {
+						let meal = data.meals[0];
+						resolve(meal);
+					}
+				});
+			} else {
+				console.log(res);
+			}
+		});
+	});
+};

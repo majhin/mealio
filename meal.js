@@ -1,12 +1,11 @@
 import { singleSuggestion, mealDetails, allFavMeals } from "./components.js";
-import { fetchByLetter, fetchByID } from "./fetch.js";
+import { fetchByLetter, fetchByID, fetchSurprise } from "./fetch.js";
 
 const search = document.getElementById("search");
-const searchButton = document.getElementById("searchButton");
+const surprise = document.getElementById("surprise");
 const allMeals = document.getElementById("allMeals");
 const searchSuggestions = document.getElementById("searchSuggestions");
 const detailsPage = document.getElementById("detailsPage");
-const detailsPageCont = document.getElementById("detailsPageCont");
 console.log(localStorage);
 const favorites = [];
 
@@ -80,41 +79,43 @@ const handleSearch = async (searchText) => {
 		});
 };
 
-const popTheDetails = async (id) => {
-	id = Number(id);
-	let innerHTML;
+function renderDetail(meal) {
 	let alreadyLiked;
-	await fetchByID(id).then((meal) => {
-		console.log(meal);
-		let {
-			strMeal,
-			strArea,
-			strCategory,
-			strMealThumb,
-			idMeal,
-			strInstructions,
-		} = meal;
-		for (let i = 0; i < favorites.length; i++) {
-			if (favorites[i] === id) {
-				alreadyLiked = true;
-				break;
-			}
+	let { strMeal, strArea, strCategory, strMealThumb, idMeal, strInstructions } =
+		meal;
+	for (let i = 0; i < favorites.length; i++) {
+		if (favorites[i] === Number(idMeal)) {
+			alreadyLiked = true;
+			break;
 		}
-		innerHTML = mealDetails(
-			strMeal,
-			strArea,
-			strCategory,
-			strMealThumb,
-			alreadyLiked,
-			idMeal,
-			strInstructions
-		);
-	});
+	}
+	let innerHTML = mealDetails(
+		strMeal,
+		strArea,
+		strCategory,
+		strMealThumb,
+		alreadyLiked,
+		idMeal,
+		strInstructions
+	);
 	detailsPage.classList.add("detailsPageAnimate");
 	searchSuggestions.innerHTML = "";
 	searchSuggestions.classList.remove("searchSuggestions");
 	detailsPage.innerHTML = innerHTML;
+}
+
+const popTheDetails = async (id) => {
+	id = Number(id);
+	await fetchByID(id).then((meal) => {
+		renderDetail(meal);
+	});
 };
+
+async function surpriseMe() {
+	await fetchSurprise().then((meal) => {
+		renderDetail(meal);
+	});
+}
 
 const addToFav = async (id) => {
 	id = Number(id);
@@ -191,6 +192,10 @@ search.addEventListener("click", (e) => {
 	}
 });
 
+surprise.addEventListener("click", (e) => {
+	surpriseMe();
+});
+
 window.addEventListener("click", (e) => {
 	console.log(e);
 	if (e.target.className == "singleSuggestion") {
@@ -204,11 +209,14 @@ window.addEventListener("click", (e) => {
 		} else {
 			removeFromFavs(id);
 		}
-	} else if (e.target.className == "para") {
+	} else if (e.target.className == "moreInfo") {
 		//Function to call the detail page prompt
 
 		let id = e.target.id.split("#")[1];
 		popTheDetails(id);
+	} else if (e.target.className == "close") {
+		detailsPage.classList.remove("detailsPageAnimate");
+		detailsPage.innerHTML = "";
 	} else if (e.target.id == "searchSuggestions") {
 		//Ye comment Thakur ne likha hai
 	} else if (e.target.id == "detailsPage") {

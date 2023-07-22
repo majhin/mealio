@@ -24,18 +24,18 @@ export function mealDetails(
 	meal_INSTRUCTIONS
 ) {
 	return (
-		`<div id="detailsPageCont" class="border detailsPageCont">` +
-		`<div class="border detailsPageImage">` +
+		`<div id="detailsPageCont" class="detailsPageCont">` +
+		`<div class="detailsPageImage">` +
 		`<img class="detailsPageImage" src="${meal_PHOTO}" alt="" srcset="">` +
 		`</div>` +
-		`<div class="border detailsPageText">` +
-		`<div class="border detailsPageTextData">${meal_Name} <img id="${
+		`<div class="detailsPageText">` +
+		`<div class="detailsPageTextData">${meal_Name} <img id="close#${meal_ID}" class="close" src="./Assets/close.png" alt="" srcset=""></div>` +
+		`<div class="detailsPageTextData">${meal_AREA} <img id="${
 			alreadyLiked == true ? "liked" : "unliked"
 		}#${meal_ID}" class="favIcon" src="${
 			alreadyLiked == true ? liked : unliked
 		}" alt="" srcset=""></div>` +
-		`<div class="border detailsPageTextData">${meal_AREA}</div>` +
-		`<div class="border detailsPageTextData">${meal_CATEGORY}</div>` +
+		`<div class="detailsPageTextData">${meal_CATEGORY}</div>` +
 		`</div>` +
 		`</div>` +
 		`<div>` +
@@ -52,20 +52,22 @@ export function allFavMeals(
 	meal_ID
 ) {
 	return (
-		`<div id="detailsPageCont" class="border singleFavMealCont">` +
-		`<div class="border detailsPageImage">` +
+		`<div id="detailsPageCont" class="singleFavMealCont">` +
+		`<div class="detailsPageImage">` +
 		`<img class="detailsPageImage" src="${meal_PHOTO}" alt="" srcset="">` +
 		`</div>` +
-		`<div class="border detailsPageText">` +
-		`<div class="border detailsPageTextData">${meal_Name} <img id="${
+		`<div class="detailsPageText">` +
+		`<div class="detailsPageTextData">${meal_Name}</div>` +
+		`<div class="detailsPageTextData">${meal_AREA}</div>` +
+		`<div class="detailsPageTextData">${meal_CATEGORY}</div>` +
+		`</div>` +
+		`<div> <img id="${
 			alreadyLiked ? "liked" : "unliked"
 		}#${meal_ID}" class="favIcon" src="${
 			alreadyLiked ? liked : unliked
-		}" alt="" srcset=""></div>` +
-		`<div class="border detailsPageTextData">${meal_AREA}</div>` +
-		`<div class="border detailsPageTextData">${meal_CATEGORY}</div>` +
+		}" alt="" srcset="">` +
+		`<img id="moreInfo#${meal_ID}" class="moreInfo" src="./Assets/information.png" alt="" srcset="">` +
 		`</div>` +
-		`<div><p id="moreInfo#${meal_ID}" class="para">More Info</p></div>` +
 		`</div>`
 	);
 }
