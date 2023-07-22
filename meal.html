@@ -1,27 +1,26 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link rel="stylesheet" href="meal.css">
-    <title>Mealio</title>
-</head>
-<body class="pos">
-    <div class="container pos">
-        <div class="heading">
-            <h1>MEALIO</h1>
-        </div>
-        <div id="searchDiv" class="search pos">
-            <input id="search" type="text">
-            <button id="searchButton" type="submit">Search</button>
-            <div id="searchSuggestions"></div>
-        </div>
-        <div class="randomButtons pos">
-            <button type="button">Give me options</button>
-            <button type="button">Surprise me !</button>
-        </div>
-        <div id="allMeals" class="meals">
-
-        </div>
-    </div>
-    <script type="module" src="meal.js"></script>
-</body>
+	<head>
+		<link rel="stylesheet" href="meal.css" />
+		<title>Mealio</title>
+	</head>
+	<body class="pos">
+		<div class="container pos">
+			<div class="heading">
+				<h1>MEALIO</h1>
+			</div>
+			<div id="searchDiv" class="search pos">
+				<input id="search" type="text" />
+				<button id="searchButton">Search</button>
+				<div id="searchSuggestions"></div>
+			</div>
+			<div class="randomButtons pos">
+				<button type="button">Give me options</button>
+				<button type="button">Surprise me !</button>
+			</div>
+			<div id="allMeals" class="meals"></div>
+			<div id="detailsPage" class="detailsPage"></div>
+		</div>
+		<script type="module" src="meal.js"></script>
+	</body>
 </html>
