@@ -6,9 +6,9 @@ const surprise = document.getElementById("surprise");
 const allMeals = document.getElementById("allMeals");
 const searchSuggestions = document.getElementById("searchSuggestions");
 const detailsPage = document.getElementById("detailsPage");
-console.log(localStorage);
 const favorites = [];
 
+//loads favorites from local into favorites array if any, else create a collection for the meal models
 function loadFromLocal() {
 	if (localStorage.getItem("Mealio")) {
 		let allFavs = JSON.parse(localStorage.getItem("Mealio"));
@@ -22,6 +22,7 @@ function loadFromLocal() {
 }
 loadFromLocal();
 
+//renders all the favorites present in the local storage
 async function renderAllFavs() {
 	if (localStorage.getItem("Mealio")) {
 		let allFavs = await JSON.parse(localStorage.getItem("Mealio"));
@@ -43,6 +44,7 @@ async function renderAllFavs() {
 }
 renderAllFavs();
 
+//renders all the suggestions during search
 function renderSearchSuggestions(suggestions) {
 	searchSuggestions.innerHTML = "";
 	searchSuggestions.classList.remove("searchSuggestions");
@@ -67,6 +69,7 @@ function renderSearchSuggestions(suggestions) {
 	searchSuggestions.classList.add("searchSuggestions");
 }
 
+//handles the search functionality by fetching as per user input and calls render on it
 const handleSearch = async (searchText) => {
 	fetchByLetter(searchText)
 		.then((results) => {
@@ -79,6 +82,7 @@ const handleSearch = async (searchText) => {
 		});
 };
 
+//renders the detail page
 function renderDetail(meal) {
 	let alreadyLiked;
 	let { strMeal, strArea, strCategory, strMealThumb, idMeal, strInstructions } =
@@ -104,6 +108,7 @@ function renderDetail(meal) {
 	detailsPage.innerHTML = innerHTML;
 }
 
+//fetches the meal who's details are asked and calls render on it
 const popTheDetails = async (id) => {
 	id = Number(id);
 	await fetchByID(id).then((meal) => {
@@ -111,12 +116,14 @@ const popTheDetails = async (id) => {
 	});
 };
 
+//fetches the surprise meal and calls render function on it
 async function surpriseMe() {
 	await fetchSurprise().then((meal) => {
 		renderDetail(meal);
 	});
 }
 
+//adds to the favorites array (quick access) and local storage (persistence for data)
 const addToFav = async (id) => {
 	id = Number(id);
 	let favIcon = document.getElementById(`unliked#${id}`);
@@ -134,13 +141,11 @@ const addToFav = async (id) => {
 		let allFavs = JSON.parse(localStorage.getItem("Mealio"));
 		allFavs.push(item);
 		localStorage.setItem("Mealio", JSON.stringify(allFavs));
-
-		console.log(JSON.parse(localStorage.getItem("Mealio")));
 	});
 	renderAllFavs();
-	console.log("added", favorites);
 };
 
+//removes from the favorites array (quick access) and local storage (persistence for data)
 const removeFromFavs = (id) => {
 	id = Number(id);
 	let allIDs = document.querySelectorAll(`[id='liked#${id}']`);
@@ -163,10 +168,9 @@ const removeFromFavs = (id) => {
 	}
 	localStorage.setItem("Mealio", JSON.stringify(allFavs));
 	renderAllFavs();
-	console.log(JSON.parse(localStorage.getItem("Mealio")));
-	console.log("removed", favorites);
 };
 
+//debounce function for better performance
 const debounce = (fn, delay) => {
 	let timerId = null;
 	return (...args) => {
@@ -174,9 +178,10 @@ const debounce = (fn, delay) => {
 		timerId = setTimeout(() => fn(...args), delay);
 	};
 };
-
+//caller function for debounce
 const onInput = debounce(handleSearch, 300);
 
+//Event listeners
 search.addEventListener("input", (e) => {
 	if (e.target.value && e.target.value != " ") {
 		onInput(e.target.value);
@@ -197,7 +202,6 @@ surprise.addEventListener("click", (e) => {
 });
 
 window.addEventListener("click", (e) => {
-	console.log(e);
 	if (e.target.className == "singleSuggestion") {
 		//Function to call the detail page prompt
 		let id = e.target.id.split("#")[1];

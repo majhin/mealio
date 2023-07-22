@@ -7,7 +7,7 @@
     font-family: "Josefin Sans";;
     src: url(./Assets/JosefinSans-Regular.ttf);
 }
-
+/* scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
 }
@@ -38,6 +38,7 @@ body{
     font-family: "Josefin Sans";
 }
 
+/* container for the complete app */
 .container{
     flex-direction: column;
     height: 90vh;
@@ -65,6 +66,7 @@ body{
     height: 100px;
 }
 
+/* search bar */
 #search {
     background: none;
     appearance: none;
@@ -94,12 +96,15 @@ body{
     transition: all 0.5s ease-in-out;
 }
 
+/* div containing surprise button */
 .randomButtons{
     width: 700px;
     height: 100px;
     display: flex;
     justify-content: space-evenly;
 }
+
+/* search suggestions div */
 .searchSuggestions{
     padding: 10px;
     top: 106px;
@@ -119,6 +124,7 @@ body{
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+/* single search suggestion */
 .singleSuggestion {
     display: flex;
     align-items: center;
@@ -135,6 +141,7 @@ body{
     cursor: pointer;
 }
 
+/* icon to add/remove from  favorites */
 .favIcon{
     margin-right: 10px;
     height: 35px;
@@ -142,12 +149,14 @@ body{
     cursor: pointer;
 }
 
+/* more Details for the meal icon */
 .moreInfo {
     height: 32px;
     width: 32px;
     cursor: pointer;
 }
 
+/* page for extra details */
 .detailsPage{
     position: absolute;
     display: flex;
@@ -156,6 +165,7 @@ body{
     overflow-y: auto;
     border-radius: 5px;
 }
+
 .detailsPageAnimate {
     animation: detailsPageMove 0.5s steps(30) forwards;
     height: 450px; 
@@ -164,15 +174,13 @@ body{
     background-image: linear-gradient( 58.2deg,  rgba(40,91,212,0.73) -3%, rgba(171,53,163,0.45) 49.3%, rgba(255,204,112,0.37) 97.7%);
     backdrop-filter: blur(7px);
 }
+
 @keyframes detailsPageMove {
     from {top: 500px; height: 0px; opacity: 0.2;}
     to {top: 100px; height: 450px; opacity: 1}
 }
 
-.border {
-    border: 1px solid black;
-}
-
+/* favorite meals div */
 .meals{
     width: 700px;
     height: 900px;
@@ -185,6 +193,7 @@ body{
     border-radius: 5px;
 }
 
+/* container for details of meal except instructions */
 .detailsPageCont {
     height: 160px;
     width: 450px;
@@ -219,12 +228,14 @@ body{
     padding: 5px;
 }
 
+/* close button for details page */
 .close {
     height: 32px;
     width: 32px;
     cursor: pointer;
 }
 
+/* container for a single favorite meal */
 .singleFavMealCont {
     height: 160px;
     width: 685px;
@@ -242,6 +253,7 @@ body{
     border-radius: 10px;
 }
 
+/* surprise me button */
 .button {
   background-color: #EA4C89;
   border-radius: 8px;

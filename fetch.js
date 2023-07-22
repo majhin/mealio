@@ -1,3 +1,4 @@
+//Fetch the meal by it's first letter or part of it's name
 export const fetchByLetter = (searchText) => {
 	return new Promise((resolve, reject) => {
 		let searchType;
@@ -23,6 +24,7 @@ export const fetchByLetter = (searchText) => {
 	});
 };
 
+//Fetch a meal by it's ID
 export const fetchByID = (id) => {
 	return new Promise((resolve, reject) => {
 		let url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
@@ -41,6 +43,7 @@ export const fetchByID = (id) => {
 	});
 };
 
+//Fetch a random meal
 export const fetchSurprise = () => {
 	return new Promise((resolve, reject) => {
 		let url = `https://www.themealdb.com/api/json/v1/1/random.php`;

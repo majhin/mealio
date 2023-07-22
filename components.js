@@ -1,6 +1,7 @@
 const unliked = "./Assets/favourite.png";
 const liked = "./Assets/favouriteRed.png";
 
+//Provide HTML for a single search suggestion
 export function singleSuggestion(meal_ID, meal_NAME, { alreadyLiked }) {
 	return (
 		`<div id="div#${meal_ID}" class="singleSuggestion">` +
@@ -14,6 +15,7 @@ export function singleSuggestion(meal_ID, meal_NAME, { alreadyLiked }) {
 	);
 }
 
+//Provide HTML for the details page
 export function mealDetails(
 	meal_Name,
 	meal_AREA,
@@ -43,6 +45,7 @@ export function mealDetails(
 	);
 }
 
+//Provide HTML for a single saved favorite meal
 export function allFavMeals(
 	meal_Name,
 	meal_AREA,
